@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/layui/css/layui.css ">
+    <title>头条号-你创作的,就是头条</title>
+    <link rel="stylesheet" href="style/login.css">
+
+</head>
+<body>
+<div id="app">
+    <p>头条号 </p>
+    <video autoplay loop muted style="width: 100%;">
+        <source src="style/头条号 - 你创作的，就是头条.mp4" type="video/mp4" />
+    </video>
+    <div id="div0" >
+        <p class="p1">你创作的就是头条 </p>
+        <div align="center" style="margin-right: 55px;margin-top: 50px;">
+            <input type="button" class="b1 in1" value="注册" @click="servet1();">
+            <input type="button" class="b2 in1" value="登录" @click="login();"></div>
+    </div>
+
+
+    <center><div style="width: 430px;height: 445px;background-color: white;display: none;"  id="div1">
+        <!-- 登录表单-->
+        <div id="div2">
+            <form class="layui-form" action="" method="post" @submit.prevent>
+                <div><label class="layui-form-label">帐密登录</label>
+                </div>
+                <div class="layui-form-item css1">
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required id="usn1" lay-verify="required" placeholder="用户名"
+                               v-model="userName" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" id="usp1" required lay-verify="required" placeholder="密码"
+                               v-model="userPassWord" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux css4"><a class="css2">忘记密码</a></div>
+                </div>
+
+                <!-- 输入验证提示信息显示在此div中-->
+                <div class="layui-form-item">
+                    <div class="css6"><span class="css7" id="span0"></span></div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-form-mid layui-word-aux css5">登录即同意<a class="css3">用户协议</a>和<a class="css3">隐私政策</a></div>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn css8" lay-submit lay-filter="formDemo" @click="validate1();">登录</button>
+                </div>
+            </form>
+            <div class="layui-form-item">
+                <img class="css9" src="style/QQ20210118193116.png" />
+            </div>
+            <div class="layui-form-item css10">
+                <div class="css12">
+                    <ul >
+                        <li class="css11"><a class="css13" @click="servet();">立即注册</a></li>
+                        <li class="css14">|</li>
+                        <li class="css11"><a class="css13">登录遇到问题</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 注册表单-->
+        <div id="div3" style="display: none;">
+            <form class="layui-form" action="" method="post" @submit.prevent>
+                <div><label class="layui-form-label css15">注册</label>
+                </div>
+                <div class="layui-form-item css1">
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required id="usn2" lay-verify="required" placeholder="用户名"
+                               v-model="userNewName" autocomplete="off" class="layui-input" @keyup="do0();">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" id="usp2" required lay-verify="required" placeholder="密码"
+                               v-model="userNewPassWord" autocomplete="off" class="layui-input" @keyup="do0();">
+                    </div>
+                </div>
+
+                <!-- 输入验证提示信息显示在此div中-->
+                <div class="layui-form-item">
+                    <div class="css6"><span class="css7" id="span1"></span></div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div>
+                        <input type="checkbox" checked name="" id="check1" lay-skin="primary" />
+                        <div class="layui-form-mid layui-word-aux css5">我已阅读并同意<a class="css3">用户协议</a>和<a class="css3">隐私政策</a></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn css8"  lay-submit lay-filter="formDemo" id="btn1" @click="validate2();">注册</button>
+                </div>
+            </form>
+            <div class="layui-form-item css17">
+                <div class="css12">
+                    <ul >
+                        <li class="css16"><a class="css13" @click="login1();">立即登录</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div></center>
+</div>
+
+
+
+</body>
+<script src="style/jquery-3.4.1.min.js"></script>
+<script src="style/layui/layui.js"></script>
+<script src="style/vue-cookies.js"></script>
+<script src="style/qs.js"></script>
+<script src="style/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+        //监听提交
+        /*form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });*/
+    });
+</script>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            userName:$cookies.get("userName")==null?'':$cookies.get("userName"),
+            userPassWord:$cookies.get("userPassWord")==null?'':$cookies.get("userPassWord"),
+            userNewPassWord:'',
+            userNewName:'',
+        },
+        mounted() {
+
+        },
+        methods: {
+            /*登录按钮*/
+            login: function () {
+                $("#div0").hide();
+                $("#div1").show();
+            },
+            /*登录界面  立即注册按钮*/
+            servet: function () {
+                $("#div2").hide();
+                $("#div3").show();
+                $("#span1").html("");
+                $("#span0").html("");
+                this.userPassWord = "";
+                this.userName = ""
+
+            },
+            /*注册界面  立即登录按钮*/
+            login1: function () {
+                $("#div3").hide().removeClass("show");
+                $("#div2").show().addClass("show");
+                $("#span1").html("");
+                $("#span0").html("");
+                this.userNewPassWord = "";
+                this.userNewName = ""
+            },
+            /*注册按钮*/
+            servet1: function () {
+                $("#div0").hide();
+                $("#div1").show();
+                $("#div2").hide();
+                $("#div3").show();
+            },
+            /* check:function(){
+                if(($('#check1').prop('checked'))==true){
+                    $("#btn1").removeClass("css18");
+                    $("#btn1").addClass("css8");
+                }
+                else {
+                    $("#btn1").removeClass("css8");
+                    $("#btn1").addClass("css18");
+                }
+            }, */
+
+            /* 注册验证*/
+            //用户名和密码判断
+            do0: function () {
+                if (this.userNewName.trim() == "" || this.userNewPassWord.trim() == "") {
+                    $("#span1").html("输入不能为空!");
+
+                } else if (this.userNewName.trim().length > 5 || this.userNewName.trim().length < 2 || this.userNewPassWord.trim().length > 12 || this.userNewPassWord.trim().length < 8) {
+                    $("#span1").html("大小写字母、数字,用户名(长度2-5),密码(长度8-12)");
+                } else {
+                    $("#span1").html("");
+                }
+
+            },
+
+            /* 登录提交  axios异步验证*/
+            validate1: function () {
+                //登录验证
+                var valicode = new TencentCaptcha('2099213336', function(res){
+                    if (res.ret === 0){
+
+                        axios.post('toutiao/loginServlet', Qs.stringify({
+                            'userName': app.userName,
+                            'userPassWord': app.userPassWord
+                        })).then(function (response) {
+                            var data = response.data;
+
+                            if (data.code == 202) {
+                                $cookies.set("userName", data.data.userName, "2m");
+                                $cookies.set("userPassWord", data.data.userPassWord, "2m");
+                                /*$cookies.set("roleResource", data.data.roleId, "2m");*/
+                                location.href = "index.html";
+                            } else {
+                                $("#span0").html("账号或密码输入错误");
+                            }
+                        })
+
+                    }
+                    else {
+                        alert("验证出错！");
+                    }
+                });
+                valicode.show();
+
+            },
+            /* 注册提交 axios异步验证*/
+            validate2: function () {
+                if ($("#span1").text() == "" && this.userNewName.trim() != "" && this.userNewPassWord.trim() != "") {
+                    axios.post('toutiao/userListServlet', Qs.stringify({'selectUserWhere': 'ttu.user_name', 's': app.userNewName,})).then(function (response) {
+                        var data = response.data;
+                        if (data.code == 114) {
+                            axios.post('toutiao/registerServlet',Qs.stringify({'userName':app.userNewName,'userPassWord':app.userNewPassWord})).then(function (response) {
+                                var data=response.data;
+                                //alert(data.code);
+                                //alert(data.data.userName+" " +data.data.userPassWord+"");
+                                if(data.code==200){
+                                    $cookies.set("userName", app.userNewName, "2m");
+                                    $cookies.set("userPassWord", app.userNewPassWord, "2m");
+                                    /*$cookies.set("roleResource", data.data.roleId, "2m");*/
+                                    /*location.href="index.html";*/
+                                    location.reload();
+                                    /*app.userName=app.userNewName;
+                                    app.password=app.userNewPassWord;*/
+                                }else {
+                                    $("#span1").html("抱歉,注册失败!");
+                                }
+
+                            })
+                        } else {
+                            $("#span1").html("用户名已存在");
+                        }
+                    });
+                }
+                else{
+                    $("#span1").html("抱歉,注册失败!");
+                }
+            },
+            computed: {}
+        }
+    })
+</script>
+</html>
+

@@ -1,0 +1,171 @@
+body{
+    margin: 0px;  
+  
+}
+video{  
+   position: fixed;  
+   right: 0px;  
+   bottom: 0px;  
+   min-width: 100%;  
+   min-height: 100%;  
+   height: auto;  
+   width: auto;  
+   /*加滤镜*/
+   /*filter: blur(15px); //背景模糊设置 */
+   /*-webkit-filter: grayscale(100%);*/  
+   /*filter:grayscale(100%); //背景灰度设置*/  
+   z-index: -100;
+}  
+
+p{
+   width: 100%;
+   margin-left: 230px;
+   margin-top: 60px;
+   font-size: 28px;
+   color: white;
+   font-family:sans-serif;
+}
+.p1{
+width: 100%;
+margin-left: 230px;
+color: white;
+font-size: 55px;
+font-style: italic; 
+margin-left: 0;
+margin-top:200px;
+text-align: center;
+letter-spacing: 20px;
+}
+.in1{
+   height: 42px;
+   width: 90px;
+   margin-left: 30px;
+   cursor:pointer;
+}
+.b1{
+    font-size: 18px;
+    display: inline-block;
+    color:#BFBFBF;
+    border: 1px solid #D8D8D8;
+    border-radius: 2px;
+    background-color: transparent;
+    border-radius:5px;
+}
+.b2{
+   border: none;
+   font-size: 18px;
+   background-color:#F04142;
+   border-radius:5px;
+}
+.b2:hover{
+   background-color: #FF8585;
+   
+}
+.layui-form-label{
+   font-size: 20px;
+   margin-left: 40px;
+   margin-top: 38px;
+}   
+
+.layui-input-inline{
+   margin-left: 55px; 
+   margin-top: 10px;  
+}
+.layui-input{
+   width: 320px;
+   height: 40px;
+   border-radius:5px;
+}
+.css1{   
+   padding-top: 28px;
+}
+.css2{
+    cursor:pointer;
+    font-style: "宋体";
+    font-size: 16px;
+    margin-left: 50px;
+}
+.css4{
+   margin-top: 10px;
+}
+.css3{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.css3:hover{
+   color:black;
+   cursor: pointer;
+}
+.css5{               
+   margin-left: 55px; 
+   font-size: 13px;    
+}
+.css6{
+  height: 12px; 
+}
+.css7{
+   color: #FF5E5E;
+   font-size: 12px;
+   float: left;
+   margin-left: 55px;
+}
+.css8{
+    height: 45px;
+    width: 320px;
+    background-color: #F85959;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.css9{
+   height: 35px;
+   width: 250px;
+}
+.css10{
+   width: 100%;
+   height: 50px;
+   background-color: #FAFAFA;
+}
+.css11{
+   float: left;
+   padding-left: 15px;
+   cursor: pointer;
+}
+.css12{
+   height: 50px;         
+   line-height: 50px;
+   margin-left: 200px;
+}
+.css13{
+   font-size: 10px;
+}
+.css14{
+   float: left;
+   padding-left: 15px;
+   color: #E9E9E9;
+}
+.css15{
+   font-size: 20px;
+   margin-left: 5px;
+   margin-top: 38px;
+   
+}
+.css16{
+   float: left;
+   padding-left: 120px;
+   cursor: pointer;
+}
+.css17{
+   margin-top: 65px;
+   width: 100%;
+   height: 50px;
+   background-color: #FAFAFA;
+   
+}
+.css18{
+   height: 45px;
+   width: 320px;
+   background-color: #F9F9F9;
+   font-size: 16px;
+   border-radius: 5px;
+   cursor: not-allowed;
+}
